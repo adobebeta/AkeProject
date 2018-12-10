@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class HomeFragment extends Fragment {
+public class LoginFragment extends Fragment {
 //    EditText name;
     String _name;
     String _name2;

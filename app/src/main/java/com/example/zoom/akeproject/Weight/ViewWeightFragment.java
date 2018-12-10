@@ -1,4 +1,4 @@
-package com.example.zoom.akeproject;
+package com.example.zoom.akeproject.Weight;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,9 +11,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.zoom.akeproject.MenuFragment;
+import com.example.zoom.akeproject.R;
 import com.example.zoom.akeproject.Weight.Weight;
 import com.example.zoom.akeproject.Weight.WeightAdapter;
 
@@ -22,11 +25,12 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class ViewFragment extends Fragment {
+public class ViewWeightFragment extends Fragment {
     private ListView listView;
     ArrayList<Weight> weightList = new ArrayList<>();
     private SQLiteDatabase database;
     private WeightAdapter weightAdapter;
+    Button backBtn;
 
     @Nullable
     @Override
@@ -38,6 +42,10 @@ public class ViewFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        backBtn = getView().findViewById(R.id.backBtn);
+        initBackBtnPressed();
+
         ListView listView = getView().findViewById(R.id.listView);
         weightAdapter = new WeightAdapter(getActivity(), R.layout.weight_item, weightList);
 
@@ -80,5 +88,19 @@ public class ViewFragment extends Fragment {
 
         db_query.close();
         database.close();
+    }
+
+    private void initBackBtnPressed() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view,new MenuFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 }

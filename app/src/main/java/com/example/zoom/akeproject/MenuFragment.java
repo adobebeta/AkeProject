@@ -10,14 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.zoom.akeproject.Bundle.BundleFragment;
+import com.example.zoom.akeproject.File.WriteFileFragment;
+import com.example.zoom.akeproject.Image.ImageFragment;
+import com.example.zoom.akeproject.Weight.ViewWeightFragment;
 import com.example.zoom.akeproject.Weight.WeightFormFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MenuFragment extends Fragment {
     ArrayList<String> menu ;
@@ -32,10 +34,14 @@ public class MenuFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         menu = new ArrayList<>();
-        menu.add("Add");
-        menu.add("View");
+        menu.add("Add Weight");
+        menu.add("View Weight");
         menu.add("Theme");
         menu.add("Load Image");
+        menu.add("Camera By Mask");
+        menu.add("Writefile and Readfile By mask");
+        menu.add("Bundle By mask");
+
 
         ListView menuList = getView().findViewById(R.id.menu_listview);
 
@@ -53,7 +59,7 @@ public class MenuFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("MENU", "Click on menu = " + menu.get(position));
 
-                if (menu.get(position).equals("Add")) {
+                if (menu.get(position).equals("Add Weight")) {
                     Log.d("USER", "GOTO ADD");
                     Toast.makeText
                             (getContext(), "GO TO ADD", Toast.LENGTH_SHORT)
@@ -66,7 +72,7 @@ public class MenuFragment extends Fragment {
                             .commit();
                 }
 
-                else if (menu.get(position).equals("View")){
+                else if (menu.get(position).equals("View Weight")){
                     Log.d("USER", "GOTO VIEW");
                     Toast.makeText
                             (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
@@ -74,7 +80,7 @@ public class MenuFragment extends Fragment {
 
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.main_view, new ViewFragment())
+                            .replace(R.id.main_view, new ViewWeightFragment())
                             .addToBackStack(null)
                             .commit();
 
@@ -89,6 +95,48 @@ public class MenuFragment extends Fragment {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.main_view, new LoadImageFragment())
+                            .addToBackStack(null)
+                            .commit();
+
+
+                }
+                else if (menu.get(position).equals("Camera by Mask")){
+                    Log.d("USER", "GOTO VIEW");
+                    Toast.makeText
+                            (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
+                            .show();
+
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_view, new ImageFragment())
+                            .addToBackStack(null)
+                            .commit();
+                }
+
+                else if (menu.get(position).equals("Writefile and Readfile By mask")){
+                    Log.d("USER", "GOTO VIEW");
+                    Toast.makeText
+                            (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
+                            .show();
+
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_view, new WriteFileFragment())
+                            .addToBackStack(null)
+                            .commit();
+
+
+                }
+
+                else if (menu.get(position).equals("Bundle By mask")){
+                    Log.d("USER", "GOTO VIEW");
+                    Toast.makeText
+                            (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
+                            .show();
+
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_view, new BundleFragment())
                             .addToBackStack(null)
                             .commit();
 

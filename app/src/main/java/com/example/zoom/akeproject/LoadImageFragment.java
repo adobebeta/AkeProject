@@ -32,6 +32,7 @@ import java.net.HttpURLConnection;
  * Created by adobebeta on 10/12/2018 AD.
  */
 
+//โหลด image จาก url
 public class LoadImageFragment extends Fragment{
 
     String url;
