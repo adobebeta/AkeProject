@@ -36,7 +36,7 @@ public class MenuFragment extends Fragment {
         menu = new ArrayList<>();
         menu.add("Add Weight");
         menu.add("View Weight");
-        menu.add("Load Image");
+        menu.add("Load Image From URL");
         menu.add("Camera By Mask");
         menu.add("Writefile and Readfile By mask");
         menu.add("Bundle By mask");
@@ -82,7 +82,7 @@ public class MenuFragment extends Fragment {
                             .commit();
 
 
-                } else if (menu.get(position).equals("Load Image")) {
+                } else if (menu.get(position).equals("Load Image From URL")) {
                     Log.d("USER", "GOTO VIEW");
                     Toast.makeText
                             (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
