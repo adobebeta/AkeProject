@@ -22,7 +22,7 @@ import com.example.zoom.akeproject.Weight.WeightFormFragment;
 import java.util.ArrayList;
 
 public class MenuFragment extends Fragment {
-    ArrayList<String> menu ;
+    ArrayList<String> menu;
 
     @Nullable
     @Override
@@ -36,7 +36,6 @@ public class MenuFragment extends Fragment {
         menu = new ArrayList<>();
         menu.add("Add Weight");
         menu.add("View Weight");
-        menu.add("Theme");
         menu.add("Load Image");
         menu.add("Camera By Mask");
         menu.add("Writefile and Readfile By mask");
@@ -70,9 +69,7 @@ public class MenuFragment extends Fragment {
                             .replace(R.id.main_view, new WeightFormFragment())
                             .addToBackStack(null)
                             .commit();
-                }
-
-                else if (menu.get(position).equals("View Weight")){
+                } else if (menu.get(position).equals("View Weight")) {
                     Log.d("USER", "GOTO VIEW");
                     Toast.makeText
                             (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
@@ -85,8 +82,7 @@ public class MenuFragment extends Fragment {
                             .commit();
 
 
-                }
-                else if (menu.get(position).equals("Load Image")){
+                } else if (menu.get(position).equals("Load Image")) {
                     Log.d("USER", "GOTO VIEW");
                     Toast.makeText
                             (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
@@ -97,10 +93,7 @@ public class MenuFragment extends Fragment {
                             .replace(R.id.main_view, new LoadImageFragment())
                             .addToBackStack(null)
                             .commit();
-
-
-                }
-                else if (menu.get(position).equals("Camera by Mask")){
+                } else if (menu.get(position).equals("Camera by Mask")) {
                     Log.d("USER", "GOTO VIEW");
                     Toast.makeText
                             (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
@@ -111,9 +104,7 @@ public class MenuFragment extends Fragment {
                             .replace(R.id.main_view, new ImageFragment())
                             .addToBackStack(null)
                             .commit();
-                }
-
-                else if (menu.get(position).equals("Writefile and Readfile By mask")){
+                } else if (menu.get(position).equals("Writefile and Readfile By mask")) {
                     Log.d("USER", "GOTO VIEW");
                     Toast.makeText
                             (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
@@ -124,11 +115,7 @@ public class MenuFragment extends Fragment {
                             .replace(R.id.main_view, new WriteFileFragment())
                             .addToBackStack(null)
                             .commit();
-
-
-                }
-
-                else if (menu.get(position).equals("Bundle By mask")){
+                } else if (menu.get(position).equals("Bundle By mask")) {
                     Log.d("USER", "GOTO VIEW");
                     Toast.makeText
                             (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
@@ -139,8 +126,6 @@ public class MenuFragment extends Fragment {
                             .replace(R.id.main_view, new BundleFragment())
                             .addToBackStack(null)
                             .commit();
-
-
                 }
             }
         });

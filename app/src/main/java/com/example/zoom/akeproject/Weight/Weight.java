@@ -10,8 +10,6 @@ public class Weight {
     private String date;
     private String weight;
 
-
-
     //default Constructor
     public Weight() {
     }

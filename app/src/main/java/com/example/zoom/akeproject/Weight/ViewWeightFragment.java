@@ -24,29 +24,32 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-
+//หน้านี้จะเป็นหน้า เรียกดูข้อมูลทั้งหมดที่มี ได้แค่ วันที่ และ น้ำหนัก
 public class ViewWeightFragment extends Fragment {
     private ListView listView;
-    ArrayList<Weight> weightList = new ArrayList<>();
-    private SQLiteDatabase database;
     private WeightAdapter weightAdapter;
+    private SQLiteDatabase database;
+
+    ArrayList<Weight> weightList = new ArrayList<>();
+
     Button backBtn;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_view,container,false);
-
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //ปุ่ม ฺ Back
         backBtn = getView().findViewById(R.id.backBtn);
         initBackBtnPressed();
 
         ListView listView = getView().findViewById(R.id.listView);
+        //use custom listView => weight_item คือ ชื่อของ xml , weightList คือ ชื่อ Arraylistที่เก็บ Weight
         weightAdapter = new WeightAdapter(getActivity(), R.layout.weight_item, weightList);
 
         //open to use db
@@ -65,8 +68,6 @@ public class ViewWeightFragment extends Fragment {
         );
 
         String date,weight;
-
-        //เปิด sherePrefences
 
 
         //query data

@@ -56,9 +56,6 @@ public class WeightFormFragment extends Fragment {
 
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
-
-
-
             @Override
             public void onClick(View v) {
 
@@ -73,9 +70,7 @@ public class WeightFormFragment extends Fragment {
                 String name = spShow.getString("username","0");
 
                 Log.d("WeightForm","data in name = "+ name);
-        myDB.execSQL("DROP TABLE IF EXISTS "+name);
-
-
+//                myDB.execSQL("DROP TABLE IF EXISTS "+name);
                 myDB.execSQL(
                         "CREATE TABLE IF NOT EXISTS "+name+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, date VARCHAR(15), weight VARCHAR(15))"
                 );
