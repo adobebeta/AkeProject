@@ -16,6 +16,9 @@ import android.widget.Toast;
 import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
+//    EditText name;
+    String _name;
+    String _name2;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,12 +31,13 @@ public class HomeFragment extends Fragment {
         Button okBtn = getView().findViewById(R.id.okBtn);
 
         okBtn.setOnClickListener(new View.OnClickListener() {
-            EditText name = getView().findViewById(R.id.name);
-            String _name = name.getText().toString();
             @Override
             public void onClick(View v) {
-                if (_name.length() < 3){
-                    Toast.makeText(getActivity(),_name.length(),Toast.LENGTH_SHORT).show();
+                EditText name = getView().findViewById(R.id.name);
+                String _name = name.getText().toString();
+
+                if (_name.length() < 3 || !(Character.isUpperCase(_name.charAt(0))) ){
+                    Toast.makeText(getActivity(),"กรุณากรอกข้อมูลให้ถูกต้อง",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     SharedPreferences sp = getContext().getSharedPreferences("name", MODE_PRIVATE);
