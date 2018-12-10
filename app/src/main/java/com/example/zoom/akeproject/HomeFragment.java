@@ -40,10 +40,19 @@ public class HomeFragment extends Fragment {
                     Toast.makeText(getActivity(),"กรุณากรอกข้อมูลให้ถูกต้อง",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    SharedPreferences sp = getContext().getSharedPreferences("name", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("USERNAME", _name);
-                    editor.commit();
+
+                    //โหมดแก้ไข by p'aew
+                    SharedPreferences.Editor sp = getContext().getSharedPreferences("name", MODE_PRIVATE).edit();
+                    sp.putString("username", _name).apply();
+                    sp.commit();
+
+                    //โหมด เรียกมาดู
+                    SharedPreferences spShow = getContext().getSharedPreferences("name", MODE_PRIVATE);
+                    Log.d("LOGIN",spShow.getString("username","0"));
+
+//                    SharedPreferences.Editor editor = sp.edit();
+//                    editor.putString("USERNAME", _name);
+//                    editor.commit();
 
                     getActivity()
                             .getSupportFragmentManager()

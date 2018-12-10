@@ -35,6 +35,7 @@ public class MenuFragment extends Fragment {
         menu.add("Add");
         menu.add("View");
         menu.add("Theme");
+        menu.add("Load Image");
 
         ListView menuList = getView().findViewById(R.id.menu_listview);
 
@@ -74,6 +75,20 @@ public class MenuFragment extends Fragment {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.main_view, new ViewFragment())
+                            .addToBackStack(null)
+                            .commit();
+
+
+                }
+                else if (menu.get(position).equals("Load Image")){
+                    Log.d("USER", "GOTO VIEW");
+                    Toast.makeText
+                            (getContext(), "GO TO VIEW", Toast.LENGTH_SHORT)
+                            .show();
+
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_view, new LoadImageFragment())
                             .addToBackStack(null)
                             .commit();
 

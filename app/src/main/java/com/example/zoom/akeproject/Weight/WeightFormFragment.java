@@ -2,6 +2,7 @@ package com.example.zoom.akeproject.Weight;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.zoom.akeproject.MenuFragment;
 import com.example.zoom.akeproject.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by adobebeta on 10/12/2018 AD.
@@ -50,7 +53,12 @@ public class WeightFormFragment extends Fragment {
     }
 
     void initsaveBtnPressed(){
+
+
         saveBtn.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View v) {
 
@@ -60,15 +68,24 @@ public class WeightFormFragment extends Fragment {
                 String _date = date.getText().toString();
                 myDB = getActivity().openOrCreateDatabase("my.db", Context.MODE_PRIVATE, null);
 
+                //เปิด sherePrefences
+                SharedPreferences spShow = getContext().getSharedPreferences("name", MODE_PRIVATE);
+                String name = spShow.getString("username","0");
+
+                Log.d("WeightForm","data in name = "+ name);
+        myDB.execSQL("DROP TABLE IF EXISTS "+name);
+
+
                 myDB.execSQL(
-                        "CREATE TABLE IF NOT EXISTS users (_id INTEGER PRIMARY KEY AUTOINCREMENT, date VARCHAR(15), weight VARCHAR(15))"
+                        "CREATE TABLE IF NOT EXISTS "+name+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, date VARCHAR(15), weight VARCHAR(15))"
                 );
 
                 Weight item = new Weight();
                 item.setContent(_date,_weight);
                 cv = item.getContent();
 
-                myDB.insert("users", null, cv);
+                //เพ่ิ่มข้อมูลลงในตารางของชื่อคนนั้นๆที่เข้ามา
+                myDB.insert(name, null, cv);
                 Log.d("SLEEP_FORM", "INSERT ALREADY");
 
                 Toast.makeText(getActivity(), "Save Success"
